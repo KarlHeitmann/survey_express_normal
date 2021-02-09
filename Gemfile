@@ -5,6 +5,8 @@ ruby '2.7.1'
 
 gem 'devise'
 
+gem 'simple_form'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.1'
 # Use sqlite3 as the database for Active Record
