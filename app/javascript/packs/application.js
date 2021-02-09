@@ -14,3 +14,9 @@ ActiveStorage.start()
 
 // import "../assets/stylesheets/application.css"
 import "./main.scss"
+
+$(function() {
+  $('#new_room_message').on('ajax:success', function(a, b,c ) {
+    $(this).find('input[type="text"]').val('');
+  });
+});
