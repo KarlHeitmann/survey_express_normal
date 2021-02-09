@@ -16,7 +16,9 @@ ActiveStorage.start()
 import "./main.scss"
 
 $(function() {
+  console.log("HOLA")
   $('#new_room_message').on('ajax:success', function(a, b,c ) {
+    console.log("bind on success");
     $(this).find('input[type="text"]').val('');
   });
 });
