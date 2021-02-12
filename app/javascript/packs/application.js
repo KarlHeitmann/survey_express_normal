@@ -5,15 +5,23 @@
 
 import Rails from "@rails/ujs"
 import * as ActiveStorage from "@rails/activestorage"
+import consumer from "../channels/consumer"
+// import * as ActionCable from "@rails/actioncable"
+// import * as App from "@rails/actioncable/app/assets/javascripts/action_cable";
 import "channels"
 import "bootstrap"
 
 Rails.start()
 ActiveStorage.start()
 
-
+// console.log("RAILS");
+// console.log(Rails);
+// console.log("/RAILS");
 // import "../assets/stylesheets/application.css"
+
 import "./main.scss"
+
+// debugger;
 
 $(function() {
   console.log("HOLA")
@@ -22,19 +30,24 @@ $(function() {
     $(this).find('input[type="text"]').val('');
   });
   $('[data-channel-subscribe="room"]').each(function(index, element) {
-    var $element = $(element),
-        room_id = $element.data('room-id')
-        messageTemplate = $('[data-role="message-template"]');
+    console.log("subscribiendo...")
+    var $element = $(element)
+    var room_id = $element.data('room-id')
+    var messageTemplate = $('[data-role="message-template"]');
+    console.log(messageTemplate)
 
     $element.animate({ scrollTop: $element.prop("scrollHeight")}, 1000)
 
-    App.cable.subscriptions.create(
+    // App.cable.subscriptions.create(
+
+    consumer.subscriptions.create(
       {
         channel: "RoomChannel",
         room: room_id
       },
       {
         received: function(data) {
+          console.log("evento received", data)
           var content = messageTemplate.children().clone(true, true);
           content.find('[data-role="user-avatar"]').attr('src', data.user_avatar_url);
           content.find('[data-role="message-text"]').text(data.message);
