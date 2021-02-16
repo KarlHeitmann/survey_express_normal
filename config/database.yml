@@ -25,7 +25,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: survey_express_normal_development
+  database: survey_express_normal_test
 
 production:
   <<: *default
