@@ -29,7 +29,7 @@ test:
 
 production:
   <<: *default
-  database: <%= ENV.fetch("POSTGRES_PORT") %> # dou4baqjq359q
+  database: <%= ENV.fetch("POSTGRES_DB") %> # dou4baqjq359q
   username: <%= ENV.fetch("POSTGRES_USER") %>
   password: <%= ENV.fetch("POSTGRES_PASS") %>
   host: <%= ENV.fetch("POSTGRES_HOST") %> # xxxxxx.compute-1.amazonaws.com
