@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_09_201359) do
+ActiveRecord::Schema.define(version: 2021_03_14_211812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,14 @@ ActiveRecord::Schema.define(version: 2021_02_09_201359) do
     t.index ["name"], name: "index_rooms_on_name", unique: true
   end
 
+  create_table "surveys", force: :cascade do |t|
+    t.string "name"
+    t.bigint "room_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_surveys_on_room_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -48,4 +56,5 @@ ActiveRecord::Schema.define(version: 2021_02_09_201359) do
 
   add_foreign_key "room_messages", "rooms"
   add_foreign_key "room_messages", "users"
+  add_foreign_key "surveys", "rooms"
 end
