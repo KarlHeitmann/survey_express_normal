@@ -12,7 +12,7 @@
             <%= alternative.name %>
             -
             <%= turbo_frame_tag "alternative-badge-#{alternative.id}" do %>
-              <%= link_to alternative.votes, room_survey_alternatives_path(@room, survey, id: alternative.id), method: :post %>
+              <%= button_to alternative.votes, room_survey_alternatives_path(@room, survey, id: alternative.id), method: :post %>
             <% end %>
           </li>
         </ul>
