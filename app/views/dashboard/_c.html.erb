@@ -1,3 +1,8 @@
 <%= turbo_frame_tag "change" do %>
-  <h1>CAMBIAR</h1>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    Soy un partial renderizado mediante hotwire
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
 <% end %>

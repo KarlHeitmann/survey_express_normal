@@ -1,18 +1,25 @@
 <h1>Surveys room: <%= @room.name %></h1>
 <%= turbo_frame_tag "change" do %>
-  <%= button_to 'cambiar', dashboard_change_path, method: :post %>
+  <%= button_to 'ESTO ES HOTWIRE, clickeame para ver como se cambia por otro parcial', dashboard_change_path, class: "btn btn-danger", method: :post %>
 <% end %>
 <ol>
   <% @room.surveys.each do |survey| %>
     <li>
       <h2><%= survey.name %></h2>
       <% survey.alternatives.each do |alternative| %>
-        <ul>
-          <li>
-            <%= alternative.name %>
-            -
+        <ul class="list-group">
+          <li class="list-group-item">
             <%= turbo_frame_tag "alternative-badge-#{alternative.id}" do %>
-              <%= button_to alternative.votes, room_survey_alternatives_path(@room, survey, id: alternative.id), method: :post %>
+              <span class="badge badge-pill badge-primary">
+                <%= alternative.name %>
+                <span class="badge badge-light"><%= alternative.votes %></span>
+              </span>
+              <%=
+                button_to 'Votar',
+                room_survey_alternatives_path(@room, survey, id: alternative.id),
+                form: {style: 'display:inline-block;'},
+                class: "btn btn-success btn-sm", method: :post
+              %>
             <% end %>
           </li>
         </ul>

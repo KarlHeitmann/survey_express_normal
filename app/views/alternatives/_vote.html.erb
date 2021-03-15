@@ -1,4 +1,7 @@
 <h1>VOTES</h1>
 <%= turbo_frame_tag "alternative-badge-#{alternative.id}" do %>
-  <%= alternative.votes %>
+  <span class="badge badge-pill badge-primary">
+    <%= alternative.name %>
+    <span class="badge badge-light"><%= alternative.votes %></span>
+  </span>
 <% end %>
