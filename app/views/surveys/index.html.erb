@@ -5,7 +5,7 @@
       <h2><%= survey.name %></h2>
       <% survey.alternatives.each do |alternative| %>
         <ul>
-          <li><%= alternative.name %> </li>
+          <li><%= alternative.name %> - <%= link_to alternative.votes, room_survey_alternatives_path(@room, survey, id: alternative.id), method: :post %> </li>
         </ul>
       <% end %>
     </li>

@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  get 'alternatives/count'
   resources :room_messages
   resources :rooms do
-    resources :surveys, only: [:index, :new, :create, :show]
+    resources :surveys, only: [:index, :new, :create, :show] do
+      post 'alternatives', to: 'alternatives#vote'
+    end
   end
   devise_for :users
   get 'dashboard/home'
