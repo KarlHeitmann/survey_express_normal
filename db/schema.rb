@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 2021_03_15_012000) do
   enable_extension "plpgsql"
 
   create_table "alternatives", force: :cascade do |t|
-    t.integer "votes"
+    t.integer "votes", default: 0, null: false
     t.bigint "survey_id", null: false
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["survey_id"], name: "index_alternatives_on_survey_id"

@@ -1,12 +1,11 @@
-<%= simple_form_for [ @room, @survey ] do |form| %>
-  <%= form.input :name %>
+<%= form_with model: [ @room, @survey ] do |form| %>
+  <%= form.text_field :name %>
 
   <div id="alternatives">
     <%= form.fields_for :crews do |ff| %>
       <%= render 'alternative_fields', :f => ff %>
     <% end %>
   </div>
-
   <div class="links">
     <%
 =begin%>

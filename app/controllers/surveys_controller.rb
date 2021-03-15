@@ -2,6 +2,7 @@ class SurveysController < ApplicationController
   before_action :set_room
   def new
     @survey = Survey.new
+
   end
 
   def show
