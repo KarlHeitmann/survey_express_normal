@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :rooms do
     resources :surveys, only: [:index, :new, :create, :show] do
       post 'alternatives', to: 'alternatives#vote'
+      post 'alternatives/new', to: 'alternatives#add'
     end
   end
   devise_for :users
