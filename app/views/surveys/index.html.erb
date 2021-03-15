@@ -1,4 +1,7 @@
 <h1>Surveys room: <%= @room.name %></h1>
+<%= turbo_frame_tag "change" do %>
+  <%= button_to 'cambiar', dashboard_change_path, method: :post %>
+<% end %>
 <ol>
   <% @room.surveys.each do |survey| %>
     <li>
