@@ -4,6 +4,7 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs"
+import "@hotwired/turbo-rails"
 import * as ActiveStorage from "@rails/activestorage"
 import consumer from "../channels/consumer"
 // import * as ActionCable from "@rails/actioncable"
@@ -23,6 +24,7 @@ import "./main.scss"
 
 // debugger;
 
+/*
 $(function() {
   console.log("HOLA")
   $('#new_room_message').on('ajax:success', function(a, b,c ) {
@@ -59,3 +61,6 @@ $(function() {
     );
   });
 });
+
+import "controllers"
+*/
