@@ -14,15 +14,7 @@
     <div class="chat" data-channel-subscribe="room" data-room-id="<%= @room.id %>">
       <%= turbo_stream_from "room-#{@room.id}" %>
       <%= turbo_frame_tag "messages" do %>
-        <% @room_messages.each do |message| %>
-          <%= turbo_frame_tag dom_id(message) do %>
-            <div class="card">
-              <div class="card-body">
-                <p><%= message.message %></p>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
+        <%= render @room_messages %>
       <% end %>
     </div>
 

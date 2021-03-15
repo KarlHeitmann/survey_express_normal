@@ -13,7 +13,7 @@ class RoomMessage < ApplicationRecord
     def broadcast_to_room
       room = self.room
       # broadcast_append_to "#{room.id}"
-      broadcast_append_to "room#{room.id}"
+      broadcast_append_to "room-#{room.id}"
     end
 
 end
