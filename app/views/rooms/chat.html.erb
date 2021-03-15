@@ -12,38 +12,18 @@
     <%= link_to 'Encuestas', room_surveys_path(@room), class: "btn btn-primary mb-3" %>
     <%= link_to 'New survey', new_room_survey_path(@room), class: "btn btn-primary mb-3" %>
     <div class="chat" data-channel-subscribe="room" data-room-id="<%= @room.id %>">
-      <%
-=begin%>
- <%= turbo_frame_tag "room-#{@room.id}" do %>
-        <% @room_messages.each do |room_message| %>
-          <p class="mb-1">
-            <%= room_message.message %>
-          </p>
+      <%= turbo_stream_from "room-#{@room.id}" %>
+      <%= turbo_frame_tag "messages" do %>
+        <% @room_messages.each do |message| %>
+          <%= turbo_frame_tag dom_id(message) do %>
+            <div class="card">
+              <div class="card-body">
+                <p><%= message.message %></p>
+              </div>
+            </div>
+          <% end %>
         <% end %>
       <% end %>
-<%
-=end%>
-      <%= turbo_stream_from "room-#{@room.id}" %>
-        <%= turbo_frame_tag "messages" do %>
-          <% @room_messages.each do |message| %>
-            <%= turbo_frame_tag dom_id(message) do %>
-              <div class="card">
-                <div class="card-body">
-                  <p><%= message.message %></p>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
-          <%
-=begin%>
- <% @room_messages.each do |room_message| %>
-            <p class="mb-1">
-              <%= room_message.message %>
-            </p>
-          <% end %>
-<%
-=end%>
-        <% end %>
     </div>
 
     <%= simple_form_for @room_message, remote: true do |form| %>
