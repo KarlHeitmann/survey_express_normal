@@ -1,0 +1,35 @@
+<%= simple_form_for [ @room, @survey ] do |form| %>
+  <% if @survey.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@survey.errors.count, "error") %> prohibited this concert from being saved:</h2>
+
+      <ul>
+      <% @survey.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form.input :name %>
+
+  <div id="alternatives">
+    <%
+=begin%>
+    <%= form.fields_for :crews do |ff| %>
+<%
+=end%>
+    <%= form.fields_for :alternatives do |ff| %>
+      <%= render 'alternative_fields', :f => ff %>
+    <% end %>
+  </div>
+
+  <div class="links">
+    <%
+=begin%>
+ <%= link_to_add_association 'Add another alternative', form, :alternatives %>
+<%
+=end%>
+  </div>
+
+  <%= form.submit "Save", class: 'btn btn-success' %>
+<% end %>

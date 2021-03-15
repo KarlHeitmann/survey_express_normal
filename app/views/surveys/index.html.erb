@@ -1,0 +1,57 @@
+<h1>Surveys room: <%= @room.name %></h1>
+<%= turbo_frame_tag "change" do %>
+  <%= button_to 'cambiar', dashboard_change_path, method: :post %>
+<% end %>
+<ol>
+  <% @room.surveys.each do |survey| %>
+    <li>
+      <h2><%= survey.name %></h2>
+      <% survey.alternatives.each do |alternative| %>
+        <ul>
+          <li>
+            <%= alternative.name %>
+            -
+            <%= turbo_frame_tag "alternative-badge-#{alternative.id}" do %>
+              <%= button_to alternative.votes, room_survey_alternatives_path(@room, survey, id: alternative.id), method: :post %>
+            <% end %>
+          </li>
+        </ul>
+      <% end %>
+      <%= form_with model: Alternative.new, url: room_survey_alternatives_new_path(@room, survey) do |form| %>
+        <div class="field">
+          <%= form.label :name %>
+          <%= form.text_field :name %>
+        </div>
+        <%= form.submit "Add", class: 'btn btn-success' %>
+      <% end %>
+    </li>
+  <% end %>
+</ol>
+<h1>Nueva encuesta</h1>
+<% survey = Survey.new %>
+<%= simple_form_for [ @room, survey ] do |form| %>
+<% if survey.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(survey.errors.count, "error") %> prohibited this concert from being saved:</h2>
+
+    <ul>
+    <% survey.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+  <%= form.input :name %>
+
+  <div id="alternatives">
+    <%= form.fields_for :alternatives do |ff| %>
+      <%= render '/surveys/alternative_fields', :f => ff %>
+    <% end %>
+  </div>
+
+  <div class="links">
+  </div>
+
+  <%= form.submit "Save", class: 'btn btn-success' %>
+<% end %>
+

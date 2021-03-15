@@ -1,0 +1,18 @@
+<%= form_with model: [ @room, @survey ] do |form| %>
+  <%= form.text_field :name %>
+
+  <div id="alternatives">
+    <%= form.fields_for :crews do |ff| %>
+      <%= render 'alternative_fields', :f => ff %>
+    <% end %>
+  </div>
+  <div class="links">
+    <%
+=begin%>
+ <%= link_to_add_association 'Add another alternative', form, :alternatives %>
+<%
+=end%>
+  </div>
+
+  <%= form.submit "Save", class: 'btn btn-success' %>
+<% end %>

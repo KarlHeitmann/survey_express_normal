@@ -8,31 +8,13 @@
   </div>
 
   <div class="col">
+    <h1>CHAT</h1>
     <%= link_to 'Encuestas', room_surveys_path(@room), class: "btn btn-primary mb-3" %>
     <%= link_to 'New survey', new_room_survey_path(@room), class: "btn btn-primary mb-3" %>
-    <div class="chat" data-channel-subscribe="room" data-room-id="<%= @room.id %>">
-      <% @room_messages.each do |room_message| %>
-        <div class="chat-message-container">
-          <div class="row no-gutters">
-            <div class="col-auto text-center">
-              <img src="<%= room_message.user.gravatar_url %>" class="avatar" alt="">
-            </div>
-
-            <div class="col">
-              <div class="message-content">
-                <p class="mb-1">
-                  <%= room_message.message %>
-                </p>
-
-                <div class="text-right">
-                  <small>
-                    <%= room_message.created_at %>
-                  </small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="chat">
+      <%= turbo_stream_from "room-#{@room.id}" %>
+      <%= turbo_frame_tag "room_messages" do %>
+        <%= render @room_messages %>
       <% end %>
     </div>
 
@@ -73,3 +55,4 @@
     </div>
   </div>
 </div>
+
