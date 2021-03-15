@@ -1,9 +1,12 @@
 class AlternativesController < ApplicationController
   before_action :set_room
   def vote
+    # @room = Room.find(params[:room_id])
     @alternative = Alternative.find(params[:id])
     @alternative.votes += 1
     @alternative.save
+    render partial: 'vote', locals: { alternative: @alternative }
+
   end
 
   def add

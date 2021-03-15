@@ -1,2 +1,6 @@
 <h1>Dashboard#home</h1>
 <h2>Rooms index</h2>
+
+<%= turbo_frame_tag "change" do %>
+  <%= button_to 'cambiar', dashboard_change_path, method: :post %>
+<% end %>
