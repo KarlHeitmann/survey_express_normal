@@ -1,2 +1,12 @@
-<h1>Surveys#index</h1>
-<p>Find me in app/views/surveys/index.html.erb</p>
+<h1>Surveys room: <%= @room.name %></h1>
+<table class="table">
+  <thead>
+  </thead>
+  <tbody>
+    <% @room.surveys.each do |survey| %>
+      <tr>
+        <td><%= survey.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
