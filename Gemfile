@@ -5,6 +5,8 @@ ruby '2.7.2'
 
 gem 'awesome_print'
 
+gem 'hotwire-rails'
+
 gem 'redis'
 
 gem 'devise'
