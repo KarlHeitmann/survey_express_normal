@@ -11,10 +11,12 @@
     <h1>CHAT</h1>
     <%= link_to 'Encuestas', room_surveys_path(@room), class: "btn btn-primary mb-3" %>
     <%= link_to 'New survey', new_room_survey_path(@room), class: "btn btn-primary mb-3" %>
+    <div class="chat" data-channel-subscribe="room" data-room-id="<%= @room.id %>">
       <%= turbo_stream_from "room-#{@room.id}" %>
       <%= turbo_frame_tag "room_messages" do %>
         <%= render @room_messages %>
       <% end %>
+    </div>
 
     <%= simple_form_for @room_message, remote: true do |form| %>
       <div class="input-group mb-3">
