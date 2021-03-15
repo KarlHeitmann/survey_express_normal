@@ -1,12 +1,13 @@
 <h1>Surveys room: <%= @room.name %></h1>
-<table class="table">
-  <thead>
-  </thead>
-  <tbody>
-    <% @room.surveys.each do |survey| %>
-      <tr>
-        <td><%= survey.name %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<ol>
+  <% @room.surveys.each do |survey| %>
+    <li>
+      <h2><%= survey.name %></h2>
+      <% survey.alternatives.each do |alternative| %>
+        <ul>
+          <li><%= alternative.name %> </li>
+        </ul>
+      <% end %>
+    </li>
+  <% end %>
+</ol>
