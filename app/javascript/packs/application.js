@@ -24,7 +24,6 @@ import "./main.scss"
 
 // debugger;
 
-/*
 $(function() {
   console.log("HOLA")
   $('#new_room_message').on('ajax:success', function(a, b,c ) {
@@ -63,4 +62,3 @@ $(function() {
 });
 
 import "controllers"
-*/
