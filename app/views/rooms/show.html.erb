@@ -1,13 +1,13 @@
-<h1>
-  <%= @room.name %>
-</h1>
-
 <div class="row">
   <div class="col-12 col-md-3">
     <%= render partial: 'rooms' %>
   </div>
 
   <div class="col">
+    <h1>
+      <%= @room.name %>
+    </h1>
+    <%= link_to 'CHAT con HOTWIRE, version BETA', rooms_chat_path(@room), class: "btn btn-danger mb-3" %>
     <%= link_to 'Encuestas', room_surveys_path(@room), class: "btn btn-primary mb-3" %>
     <%= link_to 'New survey', new_room_survey_path(@room), class: "btn btn-primary mb-3" %>
     <div class="chat" data-channel-subscribe="room" data-room-id="<%= @room.id %>">
