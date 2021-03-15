@@ -11,3 +11,31 @@
     </li>
   <% end %>
 </ol>
+<h1>Nueva encuesta</h1>
+<% survey = Survey.new %>
+<%= simple_form_for [ @room, survey ] do |form| %>
+<% if survey.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(survey.errors.count, "error") %> prohibited this concert from being saved:</h2>
+
+    <ul>
+    <% survey.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+  <%= form.input :name %>
+
+  <div id="alternatives">
+    <%= form.fields_for :alternatives do |ff| %>
+      <%= render '/surveys/alternative_fields', :f => ff %>
+    <% end %>
+  </div>
+
+  <div class="links">
+  </div>
+
+  <%= form.submit "Save", class: 'btn btn-success' %>
+<% end %>
+
