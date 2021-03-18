@@ -16,11 +16,16 @@ class RoomMessagesController < ApplicationController
 
   def update
     @room_message = RoomMessage.find(params[:id])
-    if @room_message.update(room_message_params)
-      flash[:success] = "Room #{@room.name} was updated successfully"
-      redirect_to rooms_path
+    if current_user.admin
+      if @room_message.update(room_message_params)
+        flash[:success] = "Room #{@room.name} was updated successfully"
+        redirect_to rooms_path
+      else
+        render :new
+      end
     else
-      render :new
+      flash[:danger] = "You can't perform this action"
+      redirect_to @room_message.room
     end
   end
 
