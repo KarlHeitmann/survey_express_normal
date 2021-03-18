@@ -22,6 +22,23 @@ ActiveStorage.start()
 
 import "./main.scss"
 
+// Esta instruccion SIRVE!!!! en el browser
+document.documentElement.addEventListener('turbo:render', (v1, v2)=> {console.log('render')})
+document.documentElement.addEventListener('turbo:before-stream-render', async (v1, v2)=> {
+  console.log(v1);
+  console.log(v2);
+  // const room_messages = document.getElementById('room_messages')
+  console.log("MAMA MIA");
+  // await room_messages.animate({scrollTo: 0});
+  setTimeout(() => {
+    console.log("TIMEOUT LISTO")
+    const q=document.getElementById('chat-box')
+    q.scrollTop = q.scrollHeight;
+
+  }, 250)
+  console.log("END")
+})
+
 // debugger;
 
 $(function() {
