@@ -23,6 +23,7 @@ ActiveStorage.start()
 import "./main.scss"
 
 // Esta instruccion SIRVE!!!! en el browser
+document.documentElement.addEventListener('turbo:render', (v1, v2)=> {console.log('render')})
 document.documentElement.addEventListener('turbo:before-stream-render', async (v1, v2)=> {
   console.log(v1);
   console.log(v2);
@@ -34,7 +35,7 @@ document.documentElement.addEventListener('turbo:before-stream-render', async (v
     const q=document.getElementById('chat-box')
     q.scrollTop = q.scrollHeight;
 
-  }, 1000)
+  }, 250)
   console.log("END")
 })
 
