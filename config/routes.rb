@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations',
   }
+  devise_scope :user do
+    get 'close', to: 'users/sessions#close', as: 'close_session'
+  end
   get 'dashboard/home'
   post 'dashboard/change'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
