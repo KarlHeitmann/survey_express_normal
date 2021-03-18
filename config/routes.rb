@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations',
   }
+  resources :users
   devise_scope :user do
     get 'close', to: 'users/sessions#close', as: 'close_session'
   end
@@ -21,4 +22,7 @@ Rails.application.routes.draw do
 
   # root to: 'dashboard#home'
   root to: 'rooms#index'
+  namespace :user do
+    root :to => "rooms#index"
+  end
 end
