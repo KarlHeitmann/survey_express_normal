@@ -4,81 +4,13 @@
   </div>
 
   <div class="col">
-    <div class="row">
-      <div class="col">
-        <h1>
-          <%= @room.name %>
-        </h1>
-        <button type="button" class="btn btn-danger mb-3" data-toggle="modal" data-target="#exampleModal">
-          RECARGUE PARA QUE FUNCIONE, click aqui
-        </button>
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <p>
-                  Esta parte de la página funciona con ActionCable, emplea el archivo application.js para
-                  manejar la recepción de mensajes nuevos creados por otros usuarios y ponerlos acá.
-                </p>
-                <p>
-                  Si bien esto funciona, en virtud de utilizar las herramientas de Rails y el módulo <strong>hotwire</strong>.
-                  En breve eliminaremos la parte de javascript que maneja esto, y dejaremos solamente el chat que emplea hotwire.
-                  Por el momento se puede acceder al chat que implementa hotwire con el botón rojo debajo de este botón.
-                </p>
-                <p>
-                  El chat con hotwire no está implementado por defecto porque le falta un detalle importante. Cuando llega un mensaje nuevo
-                  el scroll no baja automáticamente como SI baja con el chat que usa javascript para manejar los mensajes. Cuando alguien lo
-                  solucione, se quedara solamente el chat con hotwire.
-                </p>
-                <p>
-                  Como hotwire elimina los turbolinks que vienen por defecto en un proyecto en Ruby on Rails, cuando use el chat con javascript
-                  deberá recargar la página manualmente para que los mensajes nuevos de chat aparezcan.
-                </p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <%= link_to 'CHAT con HOTWIRE, version BETA', rooms_chat_path(@room), class: "btn btn-danger mb-3" %>
-          <%= link_to 'Encuestas', room_surveys_path(@room), class: "btn btn-primary mb-3" %>
-          <%= link_to 'New survey', new_room_survey_path(@room), class: "btn btn-primary mb-3" %>
-        </div>
-      </div>
-    </div>
-    <div class="chat" data-channel-subscribe="room" data-room-id="<%= @room.id %>">
-      <% @room_messages.each do |room_message| %>
-        <div class="chat-message-container">
-          <div class="row no-gutters">
-            <div class="col-auto text-center">
-              <img src="<%= room_message.user.gravatar_url %>" class="avatar" alt="">
-            </div>
-
-            <div class="col">
-              <div class="message-content">
-                <p class="mb-1">
-                  <%= room_message.message %>
-                </p>
-
-                <div class="text-right">
-                  <small>
-                    <%= room_message.created_at %>
-                  </small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <h1><%= @room.name %></h1>
+    <%= link_to 'Encuestas', room_surveys_path(@room), class: "btn btn-primary mb-3" %>
+    <%= link_to 'New survey', new_room_survey_path(@room), class: "btn btn-primary mb-3" %>
+    <div class="chat" id="chat-box">
+      <%= turbo_stream_from "room-#{@room.id}" %>
+      <%= turbo_frame_tag "room_messages" do %>
+        <%= render @room_messages %>
       <% end %>
     </div>
 
@@ -119,3 +51,4 @@
     </div>
   </div>
 </div>
+
