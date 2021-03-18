@@ -13,7 +13,7 @@ class RoomsController < ApplicationController
 
   def show
     @room_message = RoomMessage.new room: @room
-    @room_messages = @room.room_messages.includes(:user)
+    @room_messages = @room.room_messages.order(created_at: :asc).includes(:user)
   end
 
   def chat
