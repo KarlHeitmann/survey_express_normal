@@ -2,6 +2,12 @@
 $primary: #007bff;
 $secondary: #6c757d;
 $white: #fff;
+
+.room-message-readed {
+  background-color: green;
+  color: white;
+}
+
 .avatar {
   max-height:30px;
   border-radius: 15px;

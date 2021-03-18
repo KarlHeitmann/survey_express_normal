@@ -8,11 +8,21 @@ Rails.application.routes.draw do
     end
   end
   match 'rooms/:id/chat', to: 'rooms#chat', via: :get, as: 'rooms_chat'
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
+  }
+  resources :users
+  devise_scope :user do
+    get 'close', to: 'users/sessions#close', as: 'close_session'
+  end
   get 'dashboard/home'
   post 'dashboard/change'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   # root to: 'dashboard#home'
   root to: 'rooms#index'
+  namespace :user do
+    root :to => "rooms#index"
+  end
 end

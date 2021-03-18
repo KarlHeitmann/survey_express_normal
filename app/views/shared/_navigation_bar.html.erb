@@ -5,15 +5,10 @@
   </button>
 
   <% if current_user %>
-    <div class="dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img class="avatar" src="<%= current_user.gravatar_url %>">
-        <%= current_user.username %>
-      </a>
-
-      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-        <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
-      </div>
-    </div>
+    <a class="nav-link" href="#">
+      <img class="avatar" src="<%= current_user.gravatar_url %>">
+      <%= current_user.username %>
+    </a>
+    <%= link_to 'Logout', close_session_path, class: 'nav-link' %>
   <% end %>
 </nav>
