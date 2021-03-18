@@ -9,6 +9,10 @@
     <div class="card">
       <div class="card-body">
         <p><%= room_message.message %></p>
+        <%= form_with model: room_message do |form| %>
+          <%= form.hidden_field :readed, value: true %>
+          <%= form.submit "Leído", class: 'btn btn-success' %>
+        <% end %>
       </div>
     </div>
   <% end %>
