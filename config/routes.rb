@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   end
   match 'rooms/:id/chat', to: 'rooms#chat', via: :get, as: 'rooms_chat'
   devise_for :users
+  resources :users, only: [:update]
+  get 'profile', to: "users#edit"
+  
   get 'dashboard/home'
   post 'dashboard/change'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

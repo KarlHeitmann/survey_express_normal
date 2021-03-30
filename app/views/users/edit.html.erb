@@ -1,0 +1,12 @@
+<h2 class="text-center">Editar Usuario</h2>
+<% if notice %>
+    <p class="notice alert alert-danger "><%= notice %></p>
+<% end %>
+<%= simple_form_for current_user do |f| %>
+    <div class="form-group">
+        <%= f.input :username%>
+        <%= f.input :email %>
+        <small class="form-text text-muted">Recuerde que si cambia el correo cambia su avatar en Gravatar</small>
+        <%= f.button :submit, class: 'btn btn-primary'  %>
+    </div>
+<% end %>
