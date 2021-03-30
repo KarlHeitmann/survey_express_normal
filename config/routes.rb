@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   get 'alternatives/count'
   resources :room_messages
   resources :rooms do
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations',
   }
+  get 'profile', to: "users#edit"
   resources :users
   devise_scope :user do
     get 'close', to: 'users/sessions#close', as: 'close_session'

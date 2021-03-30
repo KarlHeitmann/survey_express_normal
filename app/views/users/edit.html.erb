@@ -1,0 +1,7 @@
+<h1 class="text-center">Edit</h1>
+<%= simple_form_for current_user do |f| %>
+  <%= f.input :username %>
+  <%= f.input :email %>
+  <small class="form-text text-muted">Recuerde que si cambia el correo cambia su avatar en Gravatar</small>
+  <%= f.button :submit, class: 'btn btn-primary'  %>
+<% end %>
