@@ -8,7 +8,7 @@
     <%= link_to 'Chat con javascript, pero estable', room_path(@room), class: "btn btn-success mb-3" %>
     <%= link_to 'Encuestas', room_surveys_path(@room), class: "btn btn-primary mb-3" %>
     <%= link_to 'New survey', new_room_survey_path(@room), class: "btn btn-primary mb-3" %>
-    <div class="chat">
+    <div class="chat" id="chat-box">
       <%= turbo_stream_from "room-#{@room.id}" %>
       <%= turbo_frame_tag "room_messages" do %>
         <%= render @room_messages %>

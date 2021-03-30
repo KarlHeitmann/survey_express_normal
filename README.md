@@ -39,14 +39,6 @@ muchos mensajes: `has_many room_messages`
   suscritos, viendo página, están conectados a través de un websocket, y entonces cuando se transmite el broadcast con
   el ActionCable, los navegadores reciben el mensaje y mediante javascript pueden actualizar la lista de mensajes del chat
 
-# JavaScript y ActionCable
-
-- app/channels/room_channel.rb: crea la conexión a ActionCable a través de las salas.
-
-- app/javascript/packs/application.js: aquí está la lógica de la recepción de mensajes. Para ver los mensajes en tiempo real,
-  es necesario ayudarse de JavaScript. En este archivo está la lógica que se activa cada vez que en el `room_messages_controller.rb`
-  se realiza un broadcast de un nuevo mensaje recibido.
-
 # Dependencias
 
 Esta aplicación para funcionar en entorno de desarrollo necesita tener redis instalado. https://redis.io/

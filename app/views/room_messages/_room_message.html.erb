@@ -1,7 +1,19 @@
 <%= turbo_frame_tag dom_id(room_message) do %>
-  <div class="card">
-    <div class="card-body">
-      <p><%= room_message.message %></p>
+  <% if room_message.readed %>
+    <div class="card">
+      <div class="card-body room-message-readed">
+        <p><%= room_message.message %></p>
+      </div>
     </div>
-  </div>
+  <% else %>
+    <div class="card">
+      <div class="card-body">
+        <p><%= room_message.message %></p>
+        <%= form_with model: room_message do |form| %>
+          <%= form.hidden_field :readed, value: true %>
+          <%= form.submit "Leído", class: 'btn btn-success' %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 <% end %>

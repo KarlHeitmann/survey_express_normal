@@ -1,5 +1,5 @@
 class RoomMessagesController < ApplicationController
-  before_action :load_entities
+  before_action :load_entities, only: [:create]
 
   def create
     @room_message = RoomMessage.create user: current_user,
@@ -14,9 +14,28 @@ class RoomMessagesController < ApplicationController
     # end
   end
 
+  def update
+    @room_message = RoomMessage.find(params[:id])
+    if current_user.admin
+      if @room_message.update(room_message_params)
+        flash[:success] = "Room #{@room.name} was updated successfully"
+        redirect_to rooms_path
+      else
+        render :new
+      end
+    else
+      flash[:danger] = "You can't perform this action"
+      redirect_to @room_message.room
+    end
+  end
+
   protected
 
   def load_entities
     @room = Room.find params.dig(:room_message, :room_id)
+  end
+
+  def room_message_params
+    params.require(:room_message).permit(:readed)
   end
 end

@@ -5,4 +5,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get users_edit_url
     assert_response :success
   end
+  # test "the truth" do
+  #   assert true
+  # end
 end
