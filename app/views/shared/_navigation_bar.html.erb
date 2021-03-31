@@ -9,6 +9,7 @@
       <img class="avatar" src="<%= current_user.gravatar_url %>">
       <%= current_user.username %>
     </a>
+    <%= link_to 'Editar', profile_path, class: 'nav-link' %>
     <%= link_to 'Logout', close_session_path, class: 'nav-link' %>
   <% end %>
 </nav>
