@@ -1,11 +1,10 @@
 <h1 class="text-center">Edit</h1>
   
-  <p>hola mundo</p>
-  
 <%= simple_form_for current_user do |f| %>
+  <div class="alert alert-dark" role="alert">
+    Para cambiar tu Gravatar, ingrese a este  <a href="https://es.gravatar.com/" class="alert-link" target="_blank">link</a>. y sigue las instrucciónes.
+  </div>
   <small class="form-text text-center">Recuerde que si cambia el correo cambia su avatar en Gravatar</small>
-  <button type="button" class="btn btn-link">Agrega tu avatar</button>
-  <%= image_tag avatar_url(user) %>
   <%= f.input :username %>
   <%= f.input :email %>
   <%= f.button :submit, class: 'btn btn-primary'  %>

@@ -3,6 +3,10 @@
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
+  <div class="alert alert-dark" role="alert">
+    Para Agregar tu Gravatar, ingrese a este  <a href="https://wordpress.com/start/wpcc/oauth2-user?ref=oauth2&oauth2_redirect=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%2F%3Fclient_id%3D1854%26response_type%3Dcode%26blog_id%3D0%26state%3Dd3eecb69f0da0d7c77e607eaa152b693761842eec16142403511dbfb87b6eef6%26redirect_uri%3Dhttps%253A%252F%252Fen.gravatar.com%252Fconnect%252F%253Faction%253Drequest_access_token%26jetpack-code%26jetpack-user-id%3D0%26action%3Doauth2-login&oauth2_client_id=1854" class="alert-link" target="_blank">link</a>. y sigue las instrucciónes.
+  </div>
+
   <div class="form-inputs">
     <%= f.input :username,
               required: true %>
