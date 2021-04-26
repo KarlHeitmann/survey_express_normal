@@ -20,7 +20,15 @@ Hello.propTypes = {
   name: PropTypes.string
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+// document.documentElement.addEventListener('turbo:render', (v1, v2)=> {console.log('render')})
+document.documentElement.addEventListener('turbo:render', () => {
+// document.documentElement.addEventListener('turbo:before-stream-render', () => {
+
+// document.addEventListener('DOMContentLoaded', () => {
+// document.addEventListener('turbolinks:load', () => {
+// document.on("turbolinks:load", function() {
+// document.addEventListener('turbolinks:load', function() {
+// document.addEventListener('turbolinks:load', function() {
   ReactDOM.render(
     <MyProsidebar />,
     document.querySelector('#sidebar')
