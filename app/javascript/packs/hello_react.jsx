@@ -21,7 +21,6 @@ Hello.propTypes = {
 }
 
 // document.documentElement.addEventListener('turbo:render', (v1, v2)=> {console.log('render')})
-document.documentElement.addEventListener('turbo:render', () => {
 // document.documentElement.addEventListener('turbo:before-stream-render', () => {
 
 // document.addEventListener('DOMContentLoaded', () => {
@@ -29,6 +28,15 @@ document.documentElement.addEventListener('turbo:render', () => {
 // document.on("turbolinks:load", function() {
 // document.addEventListener('turbolinks:load', function() {
 // document.addEventListener('turbolinks:load', function() {
+document.addEventListener('DOMContentLoaded', () => {
+  ReactDOM.render(
+    <MyProsidebar />,
+    document.querySelector('#sidebar')
+    // document.body.appendChild(document.createElement('div')),
+  )
+})
+
+document.documentElement.addEventListener('turbo:render', () => {
   ReactDOM.render(
     <MyProsidebar />,
     document.querySelector('#sidebar')
