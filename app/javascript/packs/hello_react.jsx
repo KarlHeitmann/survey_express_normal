@@ -23,7 +23,8 @@ Hello.propTypes = {
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <MyProsidebar />,
-    document.body.appendChild(document.createElement('div')),
+    document.querySelector('#sidebar')
+    // document.body.appendChild(document.createElement('div')),
   )
 })
 

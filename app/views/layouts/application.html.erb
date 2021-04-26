@@ -11,12 +11,15 @@
   </head>
 
   <body>
-    <div class="container">
-      <%= javascript_pack_tag 'hello_react' %>
-      <div class="row">
-        <div class="col-12">
-          <%= render partial: 'shared/navigation_bar' %>
-          <%= yield %>
+    <%= render partial: 'shared/navigation_bar' %>
+    <%= javascript_pack_tag 'hello_react' %>
+    <div class="d-flex">
+      <div id="sidebar"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <%= yield %>
+          </div>
         </div>
       </div>
     </div>
