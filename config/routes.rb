@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   get 'alternatives/count'
   resources :room_messages
   resources :rooms do
@@ -26,5 +26,8 @@ Rails.application.routes.draw do
   root to: 'rooms#index'
   namespace :user do
     root :to => "rooms#index"
+  end
+  namespace :api do
+    resources :rooms
   end
 end
