@@ -18,11 +18,19 @@ function MyProsidebar(props) {
         setRooms(res)
       })
   }, [])
+  const gotoRoom = (id) => {
+    console.log("Click", id)
+    fetch(`/rooms/${id}.html`)
+  }
   return <ProSidebar>
     <Menu iconShape="square">
       <SubMenu title="ROOMS" icon={<FaGem />}>
-        {rooms.map(room => <MenuItem icon={<FaGithub/>} key={room.id}>{room.name}</MenuItem>)}
+        {rooms.map(room => <MenuItem icon={<FaGithub/>} key={room.id} onClick={() => gotoRoom(room.id)}>{room.name}</MenuItem>)}
       </SubMenu>
+      <SubMenu title="rooms" icon={<FaGem />}>
+        {rooms.map(room => <a href={`/rooms/${room.id}`}>{room.name}{room.id}</a>)}
+      </SubMenu>
+
     </Menu>
   </ProSidebar>;
 }
