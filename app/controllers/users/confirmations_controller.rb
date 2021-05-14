@@ -22,9 +22,10 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   # def after_resending_confirmation_instructions_path_for(resource_name)
   #   super(resource_name)
   # end
-
+private
   # The path used after confirmation.
-  # def after_confirmation_path_for(resource_name, resource)
-  #   super(resource_name, resource)
-  # end
+  def after_confirmation_path_for(resource_name, resource)
+    super(resource_name, resource)
+    #your_new_after_confirmation_path
+  end
 end
