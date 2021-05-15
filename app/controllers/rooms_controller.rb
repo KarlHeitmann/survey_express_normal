@@ -8,7 +8,7 @@ class RoomsController < ApplicationController
   end
 
   def index
-    @rooms = Room.all
+    @rooms = Room.order(created_at: :desc)
   end
 
   def show
