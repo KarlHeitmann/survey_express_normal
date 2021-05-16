@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
-    confirmations: 'confirmations',
+    confirmations: 'user/confirmations',
   }
   get 'profile', to: "users#edit"
   resources :users
