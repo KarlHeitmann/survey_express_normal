@@ -7,6 +7,8 @@
     <h1><%= @room.name %></h1>
     <%= link_to 'Encuestas', room_surveys_path(@room), class: "btn btn-primary mb-3" %>
     <%= link_to 'New survey', new_room_survey_path(@room), class: "btn btn-primary mb-3" %>
+    <%= link_to 'Delete Room', room_path(@room), method: :delete, class: "btn btn-danger mb-3"  %>
+
     <div class="chat" id="chat-box">
       <%= turbo_stream_from "room-#{@room.id}" %>
       <%= turbo_frame_tag "room_messages" do %>
