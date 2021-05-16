@@ -9,11 +9,13 @@
     <div class="card">
       <div class="card-body">
         <p><%= room_message.message %></p>
-        <%= form_with model: room_message do |form| %>
+        <%= form_with(model: room_message) do |form| %>
           <%= form.hidden_field :readed, value: true %>
           <%= form.submit "Leído", class: 'btn btn-success' %>
         <% end %>
+        <%= button_to 'Like', {action: 'toggle_like', controller: 'room_messages', id: room_message.id}, id: "room_message_#{room_message.id}", class: 'btn btn-light', remote: true, data: {'type': 'json' } %>
       </div>
     </div>
   <% end %>
 <% end %>
+

@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   
   get 'alternatives/count'
-  resources :room_messages
+  resources :room_messages do
+    member do 
+      post 'toggle_like'
+    end
+  end
+
+
   resources :rooms do
     resources :surveys, only: [:index, :new, :create, :show] do
       post 'alternatives', to: 'alternatives#vote'

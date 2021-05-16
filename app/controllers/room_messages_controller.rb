@@ -29,6 +29,14 @@ class RoomMessagesController < ApplicationController
     end
   end
 
+  def toggle_like 
+    @room_message = RoomMessage.find(params[:id])
+    @room_message.favourite != @room_message.favourite
+    respond_to do |format| 
+      format.js 
+      format.turbo_stream {render 'toggle_like.js.erb', room_message: @room_message}
+    end
+  end
   protected
 
   def load_entities
