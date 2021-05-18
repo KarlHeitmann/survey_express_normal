@@ -9,6 +9,7 @@ class RoomsController < ApplicationController
 
   def index
     @rooms = Room.order(created_at: :desc)
+    @users = User.all
   end
 
   def show
