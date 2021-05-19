@@ -7,8 +7,11 @@
     </div>
   <% else %>
     <div class="card">
-      <div class="card-body">
+      <div class="card-body <%='bg-danger' if @room_message.favourite?%>" >
         <p><%= room_message.message %></p>
+        <% if room_message.favourite %>
+        <span class="badge badge-danger">Like</span>
+        <%end%>
         <%= form_with(model: room_message) do |form| %>
           <%= form.hidden_field :readed, value: true %>
           <%= form.submit "Leído", class: 'btn btn-success' %>

@@ -31,11 +31,10 @@ class RoomMessagesController < ApplicationController
 
   def toggle_like 
     @room_message = RoomMessage.find(params[:id])
-    @room_message.favourite != @room_message.favourite
-    respond_to do |format| 
-      format.js 
-      format.turbo_stream {render 'toggle_like.js.erb', room_message: @room_message}
-    end
+    @room_message.toggle(:favourite)
+    @room_message.save
+    RoomChannel.broadcast_to @room_message.room, @room_message
+    redirect_to @room_message.room
   end
   protected
 
