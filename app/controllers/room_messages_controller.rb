@@ -29,6 +29,13 @@ class RoomMessagesController < ApplicationController
     end
   end
 
+  def toggle_like 
+    @room_message = RoomMessage.find(params[:id])
+    @room_message.toggle(:favourite)
+    @room_message.save
+    RoomChannel.broadcast_to @room_message.room, @room_message
+    redirect_to @room_message.room
+  end
   protected
 
   def load_entities
