@@ -27,19 +27,19 @@
       </p>
     </div>
   </div>
-</div>
-
-<ul style="float:right "> 
-  <ul class="list-group float:right">
-    <li class="float:right list-group-item">Usuarios Registrados
-    <li class="list-group-item list-group-item-action list-group-item-primary">
-      <div style="float:right col-12 col-md-3">
-        <% @users.each do |user| %> 
-        <p class="col-12 col-md-3"><%= user.username %>  </p>
-        <% end %>
-      </div>
-  </li>
-  </li>
+<div class="col-12 col-md-3">
+  <ul style="float:right "> 
+    <ul class="list-group float:right">
+      <li class="float:right list-group-item">Usuarios Registrados
+      <li class="list-group-item list-group-item-action list-group-item-primary">
+        <div style="float:right col-12 col-md-3">
+          <% @users.each do |user| %> 
+          <p class="col-12 col-md-3"><%= user.username %>  </p>
+          <% end %>
+        </div>
+      </li>
+      </li>
+    </ul>
   </ul>
-</ul>
     
+</div>
