@@ -8,7 +8,8 @@ class RoomsController < ApplicationController
   end
 
   def index
-    @rooms = Room.all
+    @rooms = Room.order(created_at: :desc)
+    @users = User.all
   end
 
   def show
@@ -24,6 +25,12 @@ class RoomsController < ApplicationController
 
   def new
     @room = Room.new
+  end
+
+  def destroy
+    @room = Room.find(params[:id])
+    @room.destroy
+    redirect_to rooms_path
   end
 
   def create

@@ -1,7 +1,34 @@
-<h2>Sign up</h2>
+<h2 class="text-center m-5">Registrarse</h2>
+
+<div class="col-8 offset-2 col-sm-6 offset-sm-3">
+
+<!-- Button trigger modal -->
+<br>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Agregando un Avatar en este enlace
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+       <div class="modal-body">          
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+          <h5>Para agregar tu Gravatar</h5>
+          <p>Selecciona <a href="https://es.gravatar.com/" role="button" class="btn btn-secondary popover-test" title="Popover title" data-content="Popover body content is set in this attribute." target="_blank">Aquí </a> y sigue las instrucciónes.</p>
+          <hr>
+          <h5>Si ya tienes un usuario en Gravatar  </h5>
+          <p>Seleciona este <a href="https://wordpress.com/log-in/es?client_id=1854&redirect_to=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%3Fclient_id%3D1854%26response_type%3Dcode%26blog_id%3D0%26state%3De97375e5e8b43736e3a2ed41b82d94e99108a453df016200972e8fa83b800b17%26redirect_uri%3Dhttps%253A%252F%252Fen.gravatar.com%252Fconnect%252F%253Faction%253Drequest_access_token" class="tooltip-test" title="Tooltip"> link</a> .</p>
+        </div>
+    </div>
+  </div>
+</div>
+<hr>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+  <%= f.error_notification %> 
 
   <div class="form-inputs">
     <%= f.input :username,
@@ -26,3 +53,5 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+</div>

@@ -1,7 +1,12 @@
 <h1 class="text-center">Edit</h1>
+  
 <%= simple_form_for current_user do |f| %>
+  <div class="alert alert-dark" role="alert">
+    Para cambiar tu Gravatar, ingrese a este  <a href="https://es.gravatar.com/" class="alert-link" target="_blank">link</a>. y sigue las instrucciónes.
+  </div>
+  <small class="form-text text-center">Recuerde que si cambia el correo cambia su avatar en Gravatar</small>
   <%= f.input :username %>
   <%= f.input :email %>
-  <small class="form-text text-muted">Recuerde que si cambia el correo cambia su avatar en Gravatar</small>
   <%= f.button :submit, class: 'btn btn-primary'  %>
 <% end %>
+
